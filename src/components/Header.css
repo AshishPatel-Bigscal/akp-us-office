@@ -6,28 +6,33 @@
 }
 
 .headerContainer {
-  margin: 0px 10px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 5;
 }
 
 .headerRow1 {
-  margin: 5px;
-  height: 50px;
+  margin: 8px 5px;
+  height: 62px;
   display: flex;
   align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .companyLogo {
-  margin: 5px;
-  max-width: 36px;
+  max-width: 40px;
 }
 .companyLogo img {
   width: 100%;
 }
 .searchContainer {
-  margin-left: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
   display: flex;
   align-items: center;
-  height: 44px;
-  background-color: whitesmoke;
+  height: 50px;
+  background-color: rgb(240, 240, 240);
   border-radius: 30px;
   padding: 0px 10px;
   border: 1px solid transparent;
@@ -38,6 +43,11 @@
 .searchContainer:hover {
   border: 1px solid silver;
 }
+.headerSearchIcon {
+  fill: grey;
+  font-size: 32px;
+  margin-left: 5px;
+}
 .headerSearchIcon:hover {
   cursor: pointer;
   fill: black;
@@ -45,20 +55,20 @@
 
 .searchTxt {
   border: none;
-  font-size: 16px;
+  font-size: 18px;
   margin: 0px 10px;
   background-color: inherit;
   padding: 5px;
   width: 100%;
 }
 
-.searchTxt:focus,
-.searchcontainer {
+.searchTxt:focus {
   border-style: none;
   outline: none;
-  background-color: white;
 }
 .headerVisualSearchIcon {
+  fill: gray;
+  width: 30px;
 }
 .headerVisualSearchIcon:hover {
   fill: black;
@@ -80,6 +90,7 @@
   padding: 10px 10px;
   color: gray;
   transition: 0.3s all ease-in-out;
+  font-size: 20px;
 }
 .menuItem:hover {
   color: black;
@@ -103,6 +114,7 @@
   }
 }
 .submitPhotoBtn {
+  margin: 0px 5px;
   border: 1px solid silver;
   background-color: transparent;
   padding: 10px;
@@ -110,15 +122,22 @@
   color: grey;
   transition: 0.3s all ease-in-out;
   cursor: pointer;
-  min-width: 130px;
+  min-width: 140px;
+  border-radius: 5px;
 }
 .submitPhotoBtn:hover {
   color: black;
   border: 1px solid black;
 }
-
+.notifyIcon {
+  margin: 0px 10px;
+  font-size: 30px;
+  fill: grey;
+}
 .userCircle {
-  margin-left: 5px;
+  margin: 0px 10px;
+  font-size: 40px;
+  fill: silver;
 }
 .hamMenu {
   margin-left: 15px;
@@ -126,16 +145,27 @@
 
 .headerRow2 {
   display: flex;
-  height: 50px;
+  /* height: 60px; */
   align-items: center;
   position: relative;
 }
+.mainLinks {
+  display: flex;
+  align-items: center;
+}
+.hDivider {
+  height: 30px;
+  width: 2px;
+  background-color: silver;
+  margin: 0px 10px;
+}
 .arrowLeft,
 .arrowRight {
-  font-size: 28px;
   fill: gray;
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  width: 30px;
+  height: 30px;
 }
 .arrowLeft:hover,
 .arrowRight:hover {
@@ -148,18 +178,23 @@
   overflow-x: scroll;
   justify-content: space-between;
   align-items: center;
+  transition: 1s all ease-in-out;
+  scroll-behavior: smooth;
 }
-
 .imageCategoryList::-webkit-scrollbar {
   display: none;
+  background: transparent;
+  width: 0;
+  height: 0;
 }
 
 .imageCategory {
   white-space: nowrap;
-  padding: 10px 0px;
-  margin: 0px 10px;
+  padding: 20px 0px;
+  margin: 0px 15px;
   cursor: pointer;
   color: gray;
+  font-size: 19px;
   transition: 0.2s ease-in-out;
   text-decoration: none;
   border-bottom: 2px solid transparent;
@@ -176,14 +211,17 @@
 .shadowLeft {
   background: linear-gradient(90deg, white, transparent);
   position: absolute;
-  width: 50px;
+  width: 60px;
   height: 30px;
-  left: 20px;
+  left: 250px;
+  display: none;
 }
+
 .shadowRight {
-  background: linear-gradient(0deg, white, transparent);
+  background: linear-gradient(90deg, transparent, white);
   position: absolute;
-  width: 50px;
+  width: 60px;
   height: 30px;
-  right: 20px;
+  right: 12px;
+  display: none;
 }
