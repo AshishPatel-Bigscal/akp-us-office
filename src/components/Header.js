@@ -7,13 +7,14 @@ import { ReactComponent as VisualSearchIcon } from "../images/SearchLogo.svg";
 import { ReactComponent as NotifyIcon } from "../images/BailLogo.svg"
 import logo from "../images/unsplashLogo.png";
 import SearchModel from '../components/models/SearchModel';
-import { getTopics, getTopicDetail } from "../redux/Actions"
+import { getTopics, getTopicDetail, getRandomTopicPhoto } from "../redux/Actions"
 import { useDispatch, useSelector } from 'react-redux';
 
 const Header = () => {
     const dispatch = useDispatch();
     const topics = useSelector(state => state.topicsReducer.topics)
     const ref = useRef(null);
+
     const handleClick = (shift) => {
         ref.current.scrollLeft += +shift;
     };
@@ -26,7 +27,10 @@ const Header = () => {
         document.querySelector(".searchModalContainer").classList.add("active");
     }
 
-
+    const sendTopicDetails = (item) => {
+        dispatch(getTopicDetail(item))
+        dispatch(getRandomTopicPhoto(item))
+    }
 
     return (
         <div className='headerContainer'>
@@ -72,7 +76,7 @@ const Header = () => {
                             return (
                                 // eslint-disable-next-line jsx-a11y/anchor-is-valid
                                 <div key={index} >
-                                    <div className='imageCategory' to={`/t/${item.slug}`} onClick={() => { dispatch(getTopicDetail(item)) }}>
+                                    <div className='imageCategory' to={`/t/${item.slug}`} onClick={() => sendTopicDetails(item)}>
                                         {item.title}
                                     </div>
                                 </div>

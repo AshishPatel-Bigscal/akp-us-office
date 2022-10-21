@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+
 import "./topicHeroSection.css";
 import { useSelector } from 'react-redux';
 
@@ -6,36 +6,31 @@ import { useSelector } from 'react-redux';
 const TopicHeroSection = () => {
 
     const topic = useSelector(state => state.topicReducer.topic);
-    console.log(topic);
-    let loaded = (Boolean(topic?.cover_photo?.urls?.regular));
-
-    if (loaded) {
-        var imageStyle = {
-            backgroundImage: `url(${topic?.cover_photo?.urls?.regular})`,
-
-        }
-    }
-
+    const randomTopicPhoto = useSelector(state => state.topicReducer.randomTopicPhoto);
     return (
         <div className='container'>
-            <div className='heroSectionContainer' style={imageStyle}>
-                <div className='backShadow'></div>
-                <div className='heroContent'>
+            <div className='heroSectionContainer' style={{
+                "background": `url(${randomTopicPhoto?.urls?.regular})`
+                // "background": `url(${topic?.cover_photo?.urls?.regular})`
+            }}
+            >
+                <div className='backShadow'>
+                    <div className='heroContent'>
+                        <div className='topicDetail'>
+                            <span className='topicTitle'>{topic.title}</span>
+                            <span className='topicDescription'>{topic.description}</span>
+                            <button className='topicSubmit'>Submit to <b> {topic.title} </b></button>
+                        </div>
+                    </div>
 
-                    <div className='topicDetail'>
-                        <span className='topicTitle'>{topic.title}</span>
-                        <span className='topicDescription'>{topic.description}</span>
-                        <button className='topicSubmit'>Submit to <b> {topic.title} </b></button>
+                    <div className='heroFooter'>
+                        <span >Photo by {randomTopicPhoto?.user?.name}</span>
+                        <span className='unsplashLicenceLink' >Read more about the Unsplash Licence</span>
+                        <span >Extra Detail If Any</span>
                     </div>
                 </div>
-
-                <div className='heroFooter'>
-                    <span >Photo by Person</span>
-                    <span >Read more about the Unsplash Licence</span>
-                    <span >Extra Detail If Any</span>
-                </div>
             </div>
-        </div>
+        </div >
     )
 }
 
